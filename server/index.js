@@ -53,6 +53,23 @@ app.post("/api/login", (req, res) => {
   );
 });
 
+
+app.get('/api/register', (req, res) => {
+  
+  con.query('SELECT * FROM register', (err, result) => {
+    if (err) {
+      res.status(500).send({ message: 'Error occurred while fetching data.' });
+    } else {
+      // If data is fetched successfully, send it to the frontend
+      res.status(200).send(result);
+    }
+  });
+});
+
+
+
+
+
 app.listen(3001, () => {
   console.log("Running backend server on port 3001");
 });
